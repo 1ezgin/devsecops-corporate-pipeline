@@ -30,7 +30,7 @@ kind: Service
 metadata:
   name: spring-petclinic-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: petclinic
   ports:
