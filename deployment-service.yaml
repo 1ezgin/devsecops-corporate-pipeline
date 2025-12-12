@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: petclinic
-        image: yourdockerhubusername/boardgame:latest
+        image: 1ezgin/corp:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
