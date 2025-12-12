@@ -10,85 +10,27 @@ Goal: To establish an automated pipeline covering building, testing, quality ana
 
 This project leverages the following technologies, reflecting current skills and development goals:
 
-Category
+Core Stack
 
-Tool
+Application: Java 17, Spring Boot (Production-ready stack)
 
-Purpose
+Build Tool: Maven 3 (Compilation, unit testing, and packaging)
 
-Status/Goal
+CI/CD and DevOps Tools
 
-Application
+CI/CD Orchestration (Jenkins): Declarative Pipeline (Confident experience. Building corporate-grade pipelines.)
 
-Java 17, Spring Boot
+Artifact Management (Nexus): Repository Manager 3.x (Storage for built JAR artifacts. Confident experience.)
 
-Application source code.
+Code Analysis (SonarQube): Static code quality and security analysis (Practical application for SAST).
 
-Production-ready stack.
+Security (Shift-Left) (Trivy): Vulnerability scanning for filesystems and Docker images (Practical application).
 
-CI/CD Orchestration
+Orchestration and Containers
 
-Jenkins (Declarative Pipeline)
+Containerization (Docker): Packaging the application into an isolated image (Deep understanding of CMD/ENTRYPOINT and Volume Mount).
 
-Pipeline automation and management.
-
-Confident experience. Building corporate-grade pipelines.
-
-Build Tool
-
-Maven 3
-
-Compilation, unit testing, and packaging.
-
-Standard use.
-
-Artifact Management
-
-Nexus Repository Manager (3.x)
-
-Storage for built JAR artifacts.
-
-Confident experience.
-
-Code Analysis
-
-SonarQube
-
-Static code quality and security analysis.
-
-Practical application for SAST.
-
-Security (Shift-Left)
-
-Trivy
-
-Vulnerability scanning for filesystems and Docker images.
-
-Practical application for vulnerability scanning.
-
-Containerization
-
-Docker, Docker Compose
-
-Packaging the application into an isolated image.
-
-Deep understanding of CMD/ENTRYPOINT and Volume Mount.
-
-Orchestration
-
-Kubernetes (k8s)
-
-Application deployment and scaling.
-
-Actively learning, Focus on Deployment, Service, and Networking.
-
-📜 Current Milestones and Certifications
-
-This project serves as a key practical exercise supporting formal certifications:
-
-CKA (Certified Kubernetes Administrator) — Preparing for the practical exam.
-
-AWS SAA-C03 (Solutions Architect – Associate) — Studying cloud architecture patterns.
+Orchestration (Kubernetes/k8s): Application deployment and scaling (Actively learning, Focus on Deployment, Service, and Networking).
 
 ⚙️ CI/CD Pipeline Flow (Jenkinsfile)
 
@@ -116,41 +58,20 @@ Deploy to k8s: Automatic deployment to the webapps Namespace (conditional, runs 
 
 The following Credential IDs must be configured within Jenkins Credentials Management for the pipeline to run successfully:
 
-Credentials ID
+sonar-token: Secret Text (Purpose: Authentication token for SonarQube access.)
 
-Type
+docker-cred: Username with password (Purpose: Docker Hub credentials for image push/pull.)
 
-Purpose
+k8-cred: Secret File/Kubeconfig (Purpose: ServiceAccount token for Kubernetes cluster access.)
 
-sonar-token
-
-Secret Text
-
-Authentication token for SonarQube access.
-
-docker-cred
-
-Username with password
-
-Docker Hub credentials for image push/pull.
-
-k8-cred
-
-Secret File/Kubeconfig
-
-ServiceAccount token for Kubernetes cluster access.
-
-global-settings
-
-Managed File (Settings.xml)
-
-Maven configuration for Nexus access credentials.
+global-settings: Managed File (Settings.xml) (Purpose: Maven configuration for Nexus access credentials.)
 
 1. Nexus Configuration
 
 The <distributionManagement> block in pom.xml is configured to deploy artifacts to the Nexus Snapshot repository:
 
 [http://18.198.2.150:8081/repository/maven-snapshots/](http://18.198.2.150:8081/repository/maven-snapshots/)
+
 
 
 2. Kubernetes Deployment
@@ -171,20 +92,16 @@ The post section in the Jenkinsfile is configured to send status notifications (
 
 ⚠️ Troubleshooting & Known Issues
 
-Issue
-
-Root Cause
-
-Status/Mitigation
+Deployment & Infrastructure
 
 Kubernetes Deployment Failure
 
-Deployment to K8s failed due to invalid k8-cred (ServiceAccount token) or improper Kubelet configuration, preventing kubectl apply execution from Jenkins.
+Root Cause: Deployment to K8s failed due to invalid k8-cred (ServiceAccount token) or improper Kubelet configuration, preventing kubectl apply execution from Jenkins.
 
-Fixed: Required manual deployment. The final step depends on correct k8-cred setup.
+Status/Mitigation: Fixed: Required manual deployment. The final step depends on correct k8-cred setup.
 
 Worker Node connection failure
 
-Kubernetes Worker Node was stuck in NotReady status (likely CNI misconfiguration or firewall issue on the VM).
+Root Cause: Kubernetes Worker Node was stuck in NotReady status (likely CNI misconfiguration or firewall issue on the VM).
 
-Monitoring skipped: The monitoring stack (Prometheus/Grafana) was skipped due to the inability to connect the Worker Node. The application runs, but the infrastructure metrics collection is currently blocked.
+Status/Mitigation: Monitoring skipped: The monitoring stack (Prometheus/Grafana) was skipped due to the inability to connect the Worker Node. The application runs, but the infrastructure metrics collection is currently blocked.
