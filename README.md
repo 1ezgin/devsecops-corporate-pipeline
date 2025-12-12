@@ -6,7 +6,9 @@ This repository contains a demonstration of a comprehensive CI/CD pipeline for a
 
 Goal: To establish an automated pipeline covering building, testing, quality analysis (SonarQube), security scanning (Trivy), artifact management (Nexus), and deployment to a Kubernetes cluster.
 
-🛠️ Technology Stack
+🛠️ Technology Stack & Expertise
+
+This project leverages the following technologies, reflecting current skills and development goals:
 
 Category
 
@@ -14,11 +16,15 @@ Tool
 
 Purpose
 
+Status/Goal
+
 Application
 
 Java 17, Spring Boot
 
 Application source code.
+
+Production-ready stack.
 
 CI/CD Orchestration
 
@@ -26,11 +32,15 @@ Jenkins (Declarative Pipeline)
 
 Pipeline automation and management.
 
+Confident experience. Building corporate-grade pipelines.
+
 Build Tool
 
 Maven 3
 
 Compilation, unit testing, and packaging.
+
+Standard use.
 
 Artifact Management
 
@@ -38,29 +48,47 @@ Nexus Repository Manager (3.x)
 
 Storage for built JAR artifacts.
 
+Confident experience.
+
 Code Analysis
 
 SonarQube
 
 Static code quality and security analysis.
 
-Security (SAST/DAST)
+Practical application for SAST.
+
+Security (Shift-Left)
 
 Trivy
 
 Vulnerability scanning for filesystems and Docker images.
 
+Practical application for vulnerability scanning.
+
 Containerization
 
-Docker
+Docker, Docker Compose
 
 Packaging the application into an isolated image.
 
+Deep understanding of CMD/ENTRYPOINT and Volume Mount.
+
 Orchestration
 
-Kubernetes (k3s/k8s)
+Kubernetes (k8s)
 
 Application deployment and scaling.
+
+Actively learning, Focus on Deployment, Service, and Networking.
+
+📜 Current Milestones and Certifications
+
+This project serves as a key practical exercise supporting formal certifications:
+
+CKA (Certified Kubernetes Administrator) — Preparing for the practical exam.
+
+AWS SAA-C03 (Solutions Architect – Associate) — Studying cloud architecture patterns.
 
 ⚙️ CI/CD Pipeline Flow (Jenkinsfile)
 
